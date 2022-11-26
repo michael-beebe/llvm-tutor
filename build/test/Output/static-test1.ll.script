@@ -1,0 +1,1 @@
+set -o pipefail;{ : 'RUN: at line 1';   ../bin/static /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/Inputs/CallCounterInput.ll 2>&1 | /Users/michaelbeebe/llvm/build/bin/FileCheck /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/static-test1.ll; }

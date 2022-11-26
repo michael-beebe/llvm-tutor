@@ -1,0 +1,10 @@
+set -o pipefail;{ : 'RUN: at line 1';   /Users/michaelbeebe/llvm/build/bin/clang -isysroot `xcrun --show-sdk-path` -mlinker-version=0 -S -emit-llvm /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/../inputs/input_for_mba_sub.c -o -    | /Users/michaelbeebe/llvm/build/bin/opt --enable-new-pm=0 -load /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/lib/libMBASub.dylib -legacy-mba-sub -S -o /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.ll; } &&
+{ : 'RUN: at line 3';   /Users/michaelbeebe/llvm/build/bin/clang -isysroot `xcrun --show-sdk-path` -mlinker-version=0 /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.ll -o /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin; } &&
+{ : 'RUN: at line 8';   /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 0 0 0 0; } &&
+{ : 'RUN: at line 9';   /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 1 10 -10 -1; } &&
+{ : 'RUN: at line 10';   /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 13 13 13 13; } &&
+{ : 'RUN: at line 11';   /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 11100 100 1000 -10000; } &&
+{ : 'RUN: at line 15';   /Users/michaelbeebe/llvm/build/bin/not /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 0 0 0 1; } &&
+{ : 'RUN: at line 16';   /Users/michaelbeebe/llvm/build/bin/not /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 1 2 3 -7; } &&
+{ : 'RUN: at line 17';   /Users/michaelbeebe/llvm/build/bin/not /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin 13 13 -13 13; } &&
+{ : 'RUN: at line 18';   /Users/michaelbeebe/llvm/build/bin/not /Users/michaelbeebe/Documents/llvm/llvm-tutor/build/test/Output/MBA_sub_exec.ll.tmp.bin -11101 100 1000 10000; }

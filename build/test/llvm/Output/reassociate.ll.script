@@ -1,0 +1,1 @@
+set -o pipefail;{ : 'RUN: at line 2';   /Users/michaelbeebe/llvm/build/bin/opt -reassociate -S < /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/llvm/reassociate.ll | /Users/michaelbeebe/llvm/build/bin/FileCheck /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/llvm/reassociate.ll; }
