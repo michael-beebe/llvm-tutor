@@ -1,1 +1,0 @@
-set -o pipefail;{ : 'RUN: at line 2';   /Users/michaelbeebe/llvm/build/bin/opt -loop-deletion -S < /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/llvm/loop-deletion.ll | /Users/michaelbeebe/llvm/build/bin/FileCheck /Users/michaelbeebe/Documents/llvm/llvm-tutor/test/llvm/loop-deletion.ll; }
